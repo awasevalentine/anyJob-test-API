@@ -71,5 +71,9 @@
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "engines": {
+    "node": "14.11.0",
+    "npm": "6.14.8"
   }
 }
