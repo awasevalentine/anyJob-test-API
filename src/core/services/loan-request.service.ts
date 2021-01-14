@@ -9,14 +9,21 @@ export class LoanRequestService {
     constructor(@InjectRepository(Loan) private _loanRequestRepository: Repository<Loan>){}
 
 
+    // this method is use to search the database for an existing loan request from the request IP address that is waiting approval
+
     async findLoanRequestByIp(ip: string): Promise<Loan> {
         return this._loanRequestRepository.findOne({where: {requestIp: ip}});
     }
+
+
+    // fetch all existing loan request
 
     async getLoanRequests(): Promise<Loan[]> {
         return this._loanRequestRepository.find();
     }
 
+
+    // this method handles loan request creation
     async createLoanRequest(request: LoanRequestDTO): Promise<Loan> {
         let loanRequest: Loan = this.buildLoanRequestObjectFromModel(request);
         if(!request || !loanRequest)
