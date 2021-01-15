@@ -14,7 +14,7 @@ export class LoanRequestController {
 
     // this method is use in fetching all existing loan request from the database
 
-    @Get("requests")
+    @Get("request")
     async getLoanRequest(@Res() res) {
         var requests = await this._loanRequestService.getLoanRequests();
         return res.status(200).json(requests);
@@ -23,7 +23,7 @@ export class LoanRequestController {
 
     // this method handles loan request creation
 
-    @Post("requests/create")
+    @Post("request/create")
     async createLoanRequest(@Body() loanRequest: LoanRequestDTO, @Res() res, @Ip() ip): Promise<any> {
         try {
             console.log(loanRequest);
