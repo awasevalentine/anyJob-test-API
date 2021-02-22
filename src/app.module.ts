@@ -6,6 +6,7 @@ import { LoanRequestController } from './app/controllers/loan-request.controller
 import { LoanRequestService } from './core/services/loan-request.service';
 import { Loan } from './core/models/entities/loan.entity';
 import { ConfigModule } from '@nestjs/config';
+import { ClientMessageService } from './core/models/Not-part-of-this-project/Services/client-message.service';
 
 @Module({
   imports: [
@@ -23,6 +24,6 @@ import { ConfigModule } from '@nestjs/config';
     TypeOrmModule.forFeature([Loan]),
   ],
   controllers: [AppController, LoanRequestController],
-  providers: [AppService, LoanRequestService],
+  providers: [AppService, LoanRequestService, ClientMessageService],
 })
 export class AppModule {}
