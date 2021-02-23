@@ -1,8 +1,8 @@
 import * as nodemailer from 'nodemailer';
-import { MessageData } from '../../interface/portfolio-message.interface';
+import { MessageDto } from '../DTOs/client-message.model.dto';
 
 // async..await is not allowed in global scope, must use a wrapper
-export const clientMessage = async (data: MessageData) => {
+export const clientMessage = async (data: MessageDto) => {
 
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
@@ -23,9 +23,15 @@ export const clientMessage = async (data: MessageData) => {
     subject: `${data.subject}`, 
 
     html: `
-          <p style="padding: 15px;">
-          ${data.message}
-          </p>
+          <div style="padding: 15px; text-align: center;">
+           <p><b>From:</b> ${ data.name }</p>
+           <br>
+           <p><b>Email:</b> ${ data.email }</p>
+           <br>
+           <p><b>Subject:</b> ${ data.subject }</p>
+           <br>
+           <p><b>Message:</b> ${ data.message }</p>
+          </div>
     `
   });
 };

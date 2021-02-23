@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { MessageData } from "../../interface/portfolio-message.interface";
+import { MessageDto } from "../DTOs/client-message.model.dto";
 import { clientMessage } from "../mail/messaging.portfolio";
 
 
@@ -10,7 +10,7 @@ export class ClientMessageService {
 
   constructor(){}
 
-   async message(data: MessageData): Promise<void> {
+   async message(data: MessageDto): Promise<void> {
     return await clientMessage(data);
   }
 }
